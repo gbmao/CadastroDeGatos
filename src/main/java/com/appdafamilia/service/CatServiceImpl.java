@@ -5,6 +5,9 @@ import com.appdafamilia.dto.CatDto;
 public class CatServiceImpl implements CatService {
     @Override
     public CatDto createCat(String name) {
+
+        if(name == null) throw new IllegalArgumentException("Name cannot be null");
+
         return new CatDto(name);
     }
 }
