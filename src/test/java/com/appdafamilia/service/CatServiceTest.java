@@ -58,9 +58,9 @@ public class CatServiceTest {
     @Test
     void testCreateCat_whenGivenValidInformation_thenSaveOneTime(){
         // Arrange
-        Cat savedCat = new Cat("Boris");
+
         Mockito.when(catRepository.save(any(Cat.class)))
-                .thenReturn(savedCat);
+                .thenReturn(true);
         // Act
         catService.createCat("Boris");
         // Assert

@@ -11,9 +11,9 @@ public class CatRepositoryImpl implements CatRepository {
     private Long idSequence = 1L;
 
     @Override
-    public Cat save(Cat cat) {
+    public Boolean save(Cat cat) {
         database.put(idSequence, cat);
         idSequence++;
-        return cat;
+        return true;
     }
 }

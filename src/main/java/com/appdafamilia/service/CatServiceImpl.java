@@ -17,7 +17,15 @@ public class CatServiceImpl implements CatService {
 
         if(name == null) throw new CatServiceException("Name cannot be null");
 
-        catRepository.save(new Cat(name));
+        boolean isCatCreated;
+
+        try {
+        isCatCreated = catRepository.save(new Cat(name));
+        } catch (RuntimeException e) {
+            throw new CatServiceException(e.getMessage());
+        }
+
+        if (!isCatCreated) throw new CatServiceException("Could not create cat");
 
         return new CatDto(name);
     }
