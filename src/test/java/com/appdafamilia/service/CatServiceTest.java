@@ -40,6 +40,19 @@ public class CatServiceTest {
         assertEquals(catName,actualName.name(), "Names should be equals");
     }
 
+    @Test
+    void testCreateCat_whenNameIsEmptyOrLessThan2_thenThrowCatServiceException(){
+
+        // Arrange
+        String catName = "";
+        // Act
+
+        // Assert
+        assertThrows(CatServiceException.class,()->{
+        catService.createCat(catName);
+        },"should throw CatServiceException");
+    }
+
     @DisplayName("Throw Cat Service Exception when name is null")
     @Test
     void testCreateCat_whenNameIsNull_thenThrowCatServiceException(){
