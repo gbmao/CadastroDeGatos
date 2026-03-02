@@ -1,6 +1,7 @@
 package com.appdafamilia.service;
 
 import com.appdafamilia.dto.CatDto;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.junit.jupiter.MockitoExtension;
@@ -26,18 +27,21 @@ public class CatServiceTest {
         assertEquals(catName,actualName.name(), "Names should be equals");
     }
 
+    @DisplayName("Throw Cat Service Exception when name is null")
     @Test
-    void testeCreateCat_whenNameIsNull_thenThrowIllegalArgumentException(){
+    void testeCreateCat_whenNameIsNull_thenThrowCatServiceException(){
 
         // Arrange
         String catName = null;
         catService = new CatServiceImpl();
+        String expectedMessage = "Name cannot be null";
 
         // Act
-        assertThrows(IllegalArgumentException.class, ()->{
+        CatServiceException thrown = assertThrows(CatServiceException.class, ()->{
             catService.createCat(catName);
         });
 
         // Assert
+        assertEquals(expectedMessage, thrown.getMessage());
     }
 }
