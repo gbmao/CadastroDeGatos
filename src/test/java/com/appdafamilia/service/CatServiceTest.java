@@ -1,5 +1,6 @@
 package com.appdafamilia.service;
 
+import com.appdafamilia.data.CatRepositoryImpl;
 import com.appdafamilia.dto.CatDto;
 import com.appdafamilia.model.Cat;
 import org.junit.jupiter.api.DisplayName;
@@ -9,11 +10,13 @@ import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.ArgumentMatchers.any;
 
 @ExtendWith(MockitoExtension.class)
 public class CatServiceTest {
 
     CatService catService;
+    CatRepositoryImpl catRepository;
 
     @Test
     void testCreateCat_whenGivenValidInformation_thenReturnCatDTO(){
