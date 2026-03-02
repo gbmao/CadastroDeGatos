@@ -29,6 +29,6 @@ public class CatServiceImpl implements CatService {
 
         if (!isCatCreated) throw new CatServiceException("Could not create cat");
 
-        return new CatDto(createdCat);
+        return new CatDto(createdCat.getName(),createdCat.getId());
     }
 }

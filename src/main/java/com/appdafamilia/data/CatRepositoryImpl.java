@@ -13,6 +13,9 @@ public class CatRepositoryImpl implements CatRepository {
     @Override
     public Boolean save(Cat cat) {
         database.put(idSequence, cat);
+
+        cat.setId(idSequence);
+
         idSequence++;
         return true;
     }

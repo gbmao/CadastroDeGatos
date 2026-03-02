@@ -16,4 +16,9 @@ public class Cat {
     public Long getId() {
         return id;
     }
+
+    //must be deleted or protected after SpringBoot Implementation
+    public void setId(Long id) {
+        this.id = id;
+    }
 }
