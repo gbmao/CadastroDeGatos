@@ -19,14 +19,16 @@ public class CatServiceImpl implements CatService {
 
         boolean isCatCreated;
 
+        Cat createdCat = new Cat(name);
+
         try {
-        isCatCreated = catRepository.save(new Cat(name));
+        isCatCreated = catRepository.save(createdCat);
         } catch (RuntimeException e) {
             throw new CatServiceException(e.getMessage());
         }
 
         if (!isCatCreated) throw new CatServiceException("Could not create cat");
 
-        return new CatDto(name);
+        return new CatDto(createdCat);
     }
 }
