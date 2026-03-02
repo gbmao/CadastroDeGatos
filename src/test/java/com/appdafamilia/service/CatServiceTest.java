@@ -1,9 +1,11 @@
 package com.appdafamilia.service;
 
 import com.appdafamilia.dto.CatDto;
+import com.appdafamilia.model.Cat;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -43,5 +45,14 @@ public class CatServiceTest {
 
         // Assert
         assertEquals(expectedMessage, thrown.getMessage());
+    }
+
+    @Test
+    void testCreateCat_whenGivenValidInformation_thenSaveOneTime(){
+        // Arrange
+        Mockito.when(catRepository.save(any(Cat.class)));
+        // Act
+
+        // Assert
     }
 }
