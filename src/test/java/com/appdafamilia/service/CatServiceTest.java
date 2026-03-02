@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 @ExtendWith(MockitoExtension.class)
 public class CatServiceTest {
@@ -24,5 +24,20 @@ public class CatServiceTest {
 
         // Assert
         assertEquals(catName,actualName.name(), "Names should be equals");
+    }
+
+    @Test
+    void testeCreateCat_whenNameIsNull_thenThrowIllegalArgumentException(){
+
+        // Arrange
+        String catName = null;
+        catService = new CatServiceImpl();
+
+        // Act
+        assertThrows(IllegalArgumentException.class, ()->{
+            catService.createCat(catName);
+        });
+
+        // Assert
     }
 }
