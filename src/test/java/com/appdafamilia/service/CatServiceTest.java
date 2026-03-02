@@ -30,7 +30,6 @@ public class CatServiceTest {
 
         // Arrange
         String catName = "Boris";
-        catService = new CatServiceImpl(catRepository);
 
         // Act
         CatDto actualName = catService.createCat("Boris");
@@ -45,7 +44,6 @@ public class CatServiceTest {
 
         // Arrange
         String catName = null;
-        catService = new CatServiceImpl(catRepository);
         String expectedMessage = "Name cannot be null";
 
         // Act
