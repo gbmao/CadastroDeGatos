@@ -17,6 +17,7 @@ public class CatServiceImpl implements CatService {
     public CatDto createCat(String name) {
 
         if(name == null) throw new CatServiceException("Name cannot be null");
+        if(name.length() < 2) throw new CatServiceException("Name length can't be less than 2");
 
         boolean isCatCreated;
 

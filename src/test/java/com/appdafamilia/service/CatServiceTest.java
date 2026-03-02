@@ -45,12 +45,14 @@ public class CatServiceTest {
 
         // Arrange
         String catName = "";
+        String expectMessage = "Name length can't be less than 2";
         // Act
-
-        // Assert
-        assertThrows(CatServiceException.class,()->{
+        CatServiceException thrown = assertThrows(CatServiceException.class,()->{
         catService.createCat(catName);
         },"should throw CatServiceException");
+
+        // Assert
+        assertEquals(expectMessage,thrown.getMessage());
     }
 
     @DisplayName("Throw Cat Service Exception when name is null")
