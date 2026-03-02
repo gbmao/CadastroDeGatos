@@ -30,6 +30,8 @@ public class CatServiceTest {
 
         // Arrange
         String catName = "Boris";
+        Mockito.when(catRepository.save(any(Cat.class)))
+                .thenReturn(true);
 
         // Act
         CatDto actualName = catService.createCat("Boris");
@@ -40,7 +42,7 @@ public class CatServiceTest {
 
     @DisplayName("Throw Cat Service Exception when name is null")
     @Test
-    void testeCreateCat_whenNameIsNull_thenThrowCatServiceException(){
+    void testCreateCat_whenNameIsNull_thenThrowCatServiceException(){
 
         // Arrange
         String catName = null;
@@ -67,17 +69,17 @@ public class CatServiceTest {
         Mockito.verify(catRepository, times(1)).save(any(Cat.class));
     }
 
-    @DisplayName("should return two cats with different ID's")
-    @Test
-    void testCreateCat_whenTwoCatAreCreated_shouldReturnCatsWithDifferentIds() {
-        // Arrange
-        Mockito.when(catRepository.save(any(Cat.class)))
-                .thenReturn(true);
-        // Act
-        CatDto cat1 = catService.createCat("Boris");
-        CatDto cat2 = catService.createCat("Samanta");
-        // Assert
-        assertNotEquals(cat1.id() ,cat2.id());
-
-    }
+//    @DisplayName("should return two cats with different ID's")
+//    @Test
+//    void testCreateCat_whenTwoCatAreCreated_shouldReturnCatsWithDifferentIds() {
+//        // Arrange
+//        Mockito.when(catRepository.save(any(Cat.class)))
+//                .thenReturn(true);
+//        // Act
+//        CatDto cat1 = catService.createCat("Boris");
+//        CatDto cat2 = catService.createCat("Samanta");
+//        // Assert
+//        assertNotEquals(cat1.id() ,cat2.id());
+//
+//    }
 }

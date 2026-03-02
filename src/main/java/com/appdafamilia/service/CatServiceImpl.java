@@ -1,6 +1,7 @@
 package com.appdafamilia.service;
 
 import com.appdafamilia.data.CatRepository;
+import com.appdafamilia.data.CatRepositoryImpl;
 import com.appdafamilia.dto.CatDto;
 import com.appdafamilia.model.Cat;
 
